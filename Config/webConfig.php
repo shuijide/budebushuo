@@ -12,9 +12,9 @@ define('APP_SERVER_PATH',dirname(__DIR__).'/');
 define('WEB_SWOOLE_HOST','127.0.0.1');
 
 define('DB_HOST','127.0.0.1');
-define('DB_USER','phpuser');
+define('DB_USER','user');
 define('DB_PASS','123456');
-define('DB_NAME','shuijide2018');
+define('DB_NAME','');
 
 define('PAGE_SIZE',3); //页码起始页为1
 
