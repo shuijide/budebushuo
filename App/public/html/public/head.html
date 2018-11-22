@@ -1,0 +1,34 @@
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" ng-controller="navcateController">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed login-button" type="button" data-toggle="collapse"></button>
+            <a class="navbar-brand hidden-sm" href="#" >说</a>
+        </div>
+        <div class="navbar-collapse collapse" role="navigation">
+            <ul class="nav navbar-nav" ng-init="init()">
+                <li ng-repeat="cate in articleCate">
+                    <a href="cate/{{ cate.article_id }}" >{{ cate.article_name }}</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right hidden-sm">
+                <li>
+                    <a href="#" class="login-a"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron masthead" ng-controller="startController as start">
+    <div class="container">
+        <div class="row article-cate" ng-class="{'sjd-hidden':navHide,'sjd-show':navShow}" ng-controller="navcateController as navcate">
+            <ul class="list-unstyled list-inline" ng-init="init()">
+                <li ng-repeat="cate in articleCate">
+                    <a href="{{ cate.article_id }}.html" >{{ cate.article_name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+</div>

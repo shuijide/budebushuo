@@ -1,0 +1,33 @@
+
+<!-- 弹出层 登录 -->
+<div class="login-toggle" ng-controller="loginController">
+    <div class="container">
+        <button class="login-cancel">取消</button>
+    </div>
+    <div class="login-container">
+        <form ng-submit="loginSubmit(entry)">
+            <input class="hidden" type="text" name="" />
+            <input class="hidden" type="password" name="" />
+            <input type="text" name="" ng-model="entry.username" required placeholder="账号" />
+            <br>
+            <br>
+            <input type="password" name="" ng-model="entry.password" required placeholder="密码" />
+            <br>
+            <br>
+            <input class="btn btn-default" type="submit" value="登录">
+        </form>
+    </div>
+</div>
+
+<!-- 弹出层 退出登录 -->
+<ul class="logout-div list-unstyled" ng-controller="navcateController">
+    <li class="sjd-pointer" ng-click="logout()">退出</li>
+    <li class="logout-cancel sjd-pointer">取消</li>
+</ul>
+
+<!-- 提示信息弹窗 -->
+<div class="alertMessage"></div>
+
+<div id="index_foot">
+    <p>京ICP备 18054725 号</p>
+</div>

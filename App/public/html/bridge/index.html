@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="indexBHtml">
+<head>
+    <meta charset="UTF-8">
+
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <meta name="referrer" content="always" />
+
+    <meta name="description" content="">
+
+    <title>SaySomeThing</title>
+
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    <meta name="keywords" content="心里 心里词语信息 心里释义 心里出处 心里心里与心理">
+
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/public.css">
+
+    <script type="text/javascript" src="/bootstrap/js/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/angular/angular.min.js"></script>
+
+    <script type="text/javascript" src="/js/public.js"></script>
+
+    <script type="text/javascript" src="/js/indexbridge.js"></script>
+
+</head>
+<body>
+<style type="text/css">
+    .float-right{float: right;}
+    .jumbotron{padding: 0;}
+    .container-fluid{
+        padding: 0;
+    }
+
+    /* 导航 */
+    .index-nav-cate,.index-nav-road{
+        background-color: #222222;
+    }
+    .index-nav-cate a,.index-nav-road a{
+        color: white;
+    }
+
+    .index-nav-cate .indexb-home,.index-nav-road .indexb-home{
+        color: black;
+    }
+
+    /* 导航分类 */
+    .index-nav-cate{
+        
+    }
+    .index-nav-cate li{
+        cursor:pointer;
+        padding:5px 3px;
+        margin-right: 10px;
+    }
+    .index-nav-cate .list-inline{
+        margin-bottom: 0;
+        padding: 13px 15px 13px 15px;
+    }
+
+    /* 路径导航 */
+    .index-nav-road{
+
+    }
+    .index-nav-road .breadcrumb{
+        background-color: #222222;
+        margin: 0;
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+
+    /* anguler */
+    .sjdb-hidden{
+        display: none;
+    }
+    .nav-cate-over{
+        border-bottom: 1px solid navajowhite;
+        border-radius: 3px;
+        box-shadow: 0 1px 2px 0px white inset;
+    }
+
+    .contentBox .breadcrumb{
+        margin-left: -7px;
+        margin-right: -7px;
+    }
+    .artCateForm{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .art-cate-select{
+        padding-left: 0;
+        float: none;
+    }
+
+</style>
+
+<div class="container-fluid" ng-controller="navController" ng-init="init()">
+    <!---->
+    <div class="container-fluid index-nav-cate" ng-class="{'sjdb-hidden':isCateHidden}">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <ul class="list-unstyled list-inline">
+                    <li ng-repeat="cate in articleCate"
+                        ng-class="{'nav-cate-over':$index == navCateStyle}"
+                        ng-click="navToggle()" ng-mouseover="navCateOver($index)"
+                        ng-mouseleave="navCateLeave()">
+                        <a href="#">{{ cate.article_name }}</a>
+                    </li>
+
+                    <button type="button" class="float-right btn btn-default btn-xs">
+                        <a href="/index.html">
+                            <span class="glyphicon glyphicon-home indexb-home" aria-hidden="true"></span>
+                        </a>
+                    </button>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid index-nav-road" ng-class="{'sjdb-hidden':isRoadHidden}">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <ol class="breadcrumb">
+                    <li><a href="#">后台</a></li>
+                    <li><a href="#">HTML</a></li>
+                    <li class="active">CSS</li>
+                    <button type="button" class="float-right btn btn-default btn-xs">
+                        <a href="/index.html">
+                            <span class="glyphicon glyphicon-home indexb-home" aria-hidden="true"></span>
+                        </a>
+                    </button>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron contentBox">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#">后台</a></li>
+            <li><a href="#">HTML</a></li>
+            <li class="active">CS</li>
+            <button type="button" class="float-right btn btn-default btn-xs">
+                <a href="#">
+                    <span class="glyphicon glyphicon-pencil indexb-home" aria-hidden="true"></span>
+                </a>
+            </button>
+        </ol>
+
+        <br>
+
+        <div class="row" ng-controller="artCateEditCtrl as edit">
+            <form class="artCateForm" ng-submit="artCateSubmit()">
+                <div class="form-group col-md-2 col-sm-6 art-cate-select" ng-init="articleCateList()">
+                    <label for="artCateSelect">分类：</label>
+                    <select class="form-control" id="artCateSelect"
+                            ng-model="cateSelect"
+                            ng-options="cate.id as cate.name for cate in cateList track by cate.id">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="artTitleInput">标题：</label>
+                    <input id="artTitleInput" type="text" class="form-control" placeholder="标题" autofocus ng-model="articleDetail.artTitle">
+                </div>
+
+                <div class="form-group">
+                    <label for="artDescInput">描述：</label>
+                    <input id="artDescInput" type="text" class="form-control" placeholder="逗号分隔关键字" ng-model="articleDetail.artDesc">
+                </div>
+
+                <div class="form-group">
+                    <label for="artMainText">正文：</label>
+                    <textarea id="artMainText" class="form-control" rows="15" ng-model="articleDetail.artText"></textarea>
+                </div>
+
+                <p class="col-md-offset-5 col-xs-offset-3">
+                    <button type="submit" class="btn btn-default btn-sm">
+                        &emsp;&emsp;&emsp;&emsp;&emsp;提交&emsp;&emsp;&emsp;&emsp;&emsp;
+                    </button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- 提示信息弹窗 -->
+<div class="alertMessage"></div>
+</body>
+</html>

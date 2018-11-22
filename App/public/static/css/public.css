@@ -1,0 +1,124 @@
+body{padding:0px;margin:0px;}
+textarea {resize : none;}
+hr{margin:0;}
+a:link,a:visited{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:none;
+}
+
+/* Bootstrap Start */
+.navbar{margin-bottom: 0;}
+.jumbotron{margin-bottom: 0;}
+.row{margin-left: 0;margin-right: 0;}
+
+
+/* 自定义 */
+.sjd-blue{color:#486FD1;}
+.sjd-size_mid{font-size:20px;}
+.sjd-hidden{display: none;}
+.sjd-show{display: block;}
+.sjd-pointer{cursor:pointer;}
+/* head foot */
+#index_foot{
+	position:fixed;
+	bottom: 0px;
+	left:47%;
+	text-align: center;
+	font-size: 12px;
+	color:dimgrey;
+}
+/*登录弹窗*/
+.login-toggle{
+	display: none;
+	text-align: center;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, .8);
+	z-index: 99998;
+}
+.login-container{
+	max-width: 380px;
+	max-height: 210px;
+}
+/*替换登录按钮样式*/
+.navbar-inverse .navbar-toggle{
+	border-color: wheat;
+	color: navajowhite;
+}
+/*导航主页按钮*/
+.navbar-inverse .navbar-brand{
+	color: navajowhite;
+}
+/*下层导航*/
+.article-cate{
+	padding: 30px 10px 0px 10px;
+}
+
+/*取消登录按钮*/
+.login-cancel{
+	border-color: wheat;
+	color: navajowhite;
+	position: relative;
+	float: right;
+	padding: 9px 10px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	border-radius: 4px;
+	background-color: darkred;
+	background-image: none;
+	border: 1px solid transparent;
+}
+/*登录input样式*/
+.login-toggle input{
+	background-color: transparent;
+	border:none;
+	border-bottom:2px solid #eee;
+	outline: none;
+	color: white;
+	padding: 5px;
+}
+
+/* 弹窗 */
+.alertMessage{
+	display: none;
+	position: fixed;
+	min-width: 200px;
+	max-width: 430px;
+	z-index: 99999;
+	border-radius: 4px;
+	color: black;
+	padding: 10px 10px;
+	text-align: center;
+	background: linear-gradient(to right, red,orange,deeppink,gray,deeppink,orange,red);
+}
+
+/*退出登录*/
+.logout-div{
+	display: none;
+	position: fixed;
+	top:50px;
+	padding: 8px;
+	margin: 0;
+	border:1px solid #222222;
+	border-radius: 4px;
+	background-color: #222222;
+	color: white;
+	text-align: center;
+}
+.logout-div li{
+	border:1px solid bisque;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	-webkit-box-shadow: 1px 0px 0px bisque;
+	-moz-box-shadow: 1px 0px 0px bisque;
+	box-shadow: 1px 0px 0px bisque;
+}

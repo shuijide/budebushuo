@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="indexHtml">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <meta name="referrer" content="always" />
+
+    <meta name="description" content="">
+
+    <title>SaySomeThing</title>
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <meta name="keywords" content="心里 心里词语信息 心里释义 心里出处 心里心里与心理">
+
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/public.css">
+
+    <script type="text/javascript" src="/bootstrap/js/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/angular/angular.min.js"></script>
+
+    <script type="text/javascript" src="/js/public.js"></script>
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container" ng-controller="navcateController">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed login-button" type="button" data-toggle="collapse"></button>
+            <a class="navbar-brand hidden-sm" href="#" >说</a>
+        </div>
+        <div class="navbar-collapse collapse" role="navigation">
+            <ul class="nav navbar-nav" ng-init="init()">
+                <li ng-repeat="cate in articleCate">
+                    <a href="{{ cate.article_id }}" >{{ cate.article_name }}</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right hidden-sm">
+                <li>
+                    <a href="#" class="login-a"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron masthead" ng-controller="startController as start">
+    <div class="container">
+        <div class="row article-cate" ng-class="{'sjd-hidden':navHide,'sjd-show':navShow}" ng-controller="navcateController as navcate">
+            <ul class="list-unstyled list-inline" ng-init="init()">
+                <li ng-repeat="cate in articleCate">
+                    <a href="{{ cate.article_id }}" >{{ cate.article_name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+    .index-box{
+        padding-top: 0;
+    }
+
+</style>
+
+    <div class="jumbotron masthead index-box">
+        <div class="container">
+            第二个
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 弹出层 登录 -->
+<div class="login-toggle" ng-controller="loginController">
+    <div class="container">
+        <button class="login-cancel">取消</button>
+    </div>
+    <div class="login-container">
+        <form ng-submit="loginSubmit(entry)">
+            <input class="hidden" type="text" name="" />
+            <input class="hidden" type="password" name="" />
+            <input type="text" name="" ng-model="entry.username" required placeholder="账号" />
+            <br>
+            <br>
+            <input type="password" name="" ng-model="entry.password" required placeholder="密码" />
+            <br>
+            <br>
+            <input class="btn btn-default" type="submit" value="登录">
+        </form>
+    </div>
+</div>
+
+<!-- 弹出层 退出登录 -->
+<ul class="logout-div list-unstyled" ng-controller="navcateController">
+    <li class="sjd-pointer" ng-click="logout()">退出</li>
+    <li class="logout-cancel sjd-pointer">取消</li>
+</ul>
+
+<!-- 提示信息弹窗 -->
+<div class="alertMessage"></div>
+
+<div id="index_foot">
+    <p>京ICP备 18054725 号</p>
+</div>
+</body>
+</html>
